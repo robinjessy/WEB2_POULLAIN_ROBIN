@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">yolo 5</div>
+                <div class="title"> yolo v2</div>
             </div>
         </div>
     </body>
