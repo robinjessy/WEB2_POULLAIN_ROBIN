@@ -1,3 +1,5 @@
+
+
 @if (count($errors) > 0)
     <div class="alert alert-danger">
         <strong>Attention</strong>Certains champs n'ont pas été rempli correctement.
@@ -9,8 +11,8 @@
     </div>
 @endif
 
-@if(session())->has('success'))
-    <div class="alert-alert-success">
+@if(session()->has('success'))
+    <div class="alert alert-success">
         {{session('success')}}
     </div>
 @endif

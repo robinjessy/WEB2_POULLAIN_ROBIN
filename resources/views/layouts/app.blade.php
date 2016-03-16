@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li><a href="{{ url('/projets') }}">Projet</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -74,8 +74,10 @@
     </nav>
 
     <div class="container">
+
         @include('flash')
         @yield('content')
+
     </div>
 
     <!-- JavaScripts -->
