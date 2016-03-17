@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Projet;
+use App\Post;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class ProjetController extends Controller
+class PostController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth', ['except' => ['index', 'show']]);
@@ -20,9 +21,9 @@ class ProjetController extends Controller
      */
     public function index()
     {
-        $projets = Projet::all();
-        return view('projets.index')
-            ->with(compact('projets'));
+        $posts=Post::all();
+        return view('post.index', compact('posts'));
+
     }
 
     /**
@@ -32,9 +33,8 @@ class ProjetController extends Controller
      */
     public function create()
     {
-        $projet = new Projet();
-        return view('projets.create', compact('projet'));
-
+        $post = new Post();
+        return view('post.create', compact('post'));
     }
 
     /**
@@ -43,10 +43,10 @@ class ProjetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Requests\ProjetsRequest $request)
+    public function store(Requests\PostRequest $request)
     {
-        Projet::create($request->only('name','tel','email','adresse','description','type','context','objectif','contrainte'));
-        return redirect(action('ProjetController@index'))->with('success','Le projet a bien été créée.');
+        Post::create($request->only('title','description'));
+        return redirect(action('PostController@index'))->with('success','L\'article a bien été créée.');
     }
 
     /**
@@ -57,7 +57,8 @@ class ProjetController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('post.show', compact('post'));
     }
 
     /**
@@ -68,8 +69,8 @@ class ProjetController extends Controller
      */
     public function edit($id)
     {
-        $projet = Projet::find($id);
-        return view('projets.edit', compact('projet'));
+        $post = Post::find($id);
+        return view('post.edit', compact('post'));
     }
 
     /**
@@ -79,12 +80,12 @@ class ProjetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Requests\ProjetsRequest $request, $id)
+    public function update(Requests\PostRequest $request, $id)
     {
-        $projet=Projet::findOrFail($id);
+        $post=Post::findOrFail($id);
 
-        $projet->update($request->only('name','email','tel','adresse','description','type','context','objectif','contrainte'));
-        return redirect(action('ProjetController@index'))->with('success','Le projet a bien été modifier.');
+        $post->update($request->only('title','description'));
+        return redirect(action('PostController@index'))->with('success','L\'article a bien été modifier.');
     }
 
     /**
@@ -95,10 +96,9 @@ class ProjetController extends Controller
      */
     public function destroy($id)
     {
-        $projet = Projet::findorFail($id);
+        $post = Post::findorFail($id);
 
-        $projet->delete($projet->all());
-        return redirect(action('ProjetController@index'))->with('success','Le projet a bien été Supprimer.');
-
+        $post->delete($post->all());
+        return redirect(action('PostController@index'))->with('success','L\'article a bien été Supprimer.');
     }
 }

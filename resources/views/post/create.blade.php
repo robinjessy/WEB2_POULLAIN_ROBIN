@@ -5,6 +5,6 @@
     <h3>Ajouter un projet</h3>
 
 
-    @include('projets.form',['action' => 'store'])
+    @include('post.form',['action' => 'store'])
 
 @endsection

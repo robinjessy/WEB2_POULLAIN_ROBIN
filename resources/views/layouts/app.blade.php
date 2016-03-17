@@ -49,6 +49,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/projets') }}">Projet</a></li>
+                    <li><a href="{{ url('/post') }}">Article</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
