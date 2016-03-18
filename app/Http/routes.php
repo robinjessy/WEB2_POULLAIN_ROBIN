@@ -31,6 +31,12 @@ Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
     Route::get('/home', 'HomeController@index');
+    Route::get('Profil',['uses'=>'UsersController@edit', 'as' => 'profil']);
+    Route::post('Profil',['uses'=>'UsersController@update']);
+    Route::get('/contact', function(){
+        return view('contact');
+    });
+
     route::resource('/projets', 'ProjetController');
     route::resource('/post', 'PostController');
 
