@@ -26,6 +26,10 @@
 
                 <td>
                     <div class="col-md-3">
+                        <a href="{{ action('ProjetController@show', $projet) }}" class="btn btn-info"> Afficher</a>
+                    </div>
+                    @if(Auth::check())
+                    <div class="col-md-3">
                     <a href="{{ action('ProjetController@edit', $projet) }}" class="btn btn-info"> Editer</a>
                     </div>
                     <div class="col-md-3" >
@@ -35,6 +39,7 @@
                             <button class="btn btn-danger" >Supprimer</button>
                         </form>
                     </div>
+                    @endif
                 </td>
             </tr>
         @endforeach

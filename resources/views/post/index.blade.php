@@ -21,7 +21,7 @@
                         <div class="col-md-3">
                             <a href="{{ action('PostController@show', $post) }}" class="btn btn-info"> Afficher</a>
                         </div>
-
+                        @if(Auth::check())
                         <div class="col-md-3">
                             <a href="{{ action('PostController@edit', $post) }}" class="btn btn-info"> Editer</a>
                         </div>
@@ -33,7 +33,7 @@
                                 <button class="btn btn-danger" >Supprimer</button>
                             </form>
                         </div>
-
+                        @endif
                     </div>
                 </div>
             @endforeach

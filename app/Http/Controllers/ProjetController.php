@@ -57,7 +57,8 @@ class ProjetController extends Controller
      */
     public function show($id)
     {
-        //
+        $projet = Projet::find($id);
+        return view('projets.show', compact('projet'));
     }
 
     /**
